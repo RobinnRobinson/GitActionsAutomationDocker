@@ -1,0 +1,40 @@
+name: learn-github-actions 
+# The name must be unique within the repository
+# the name is the key to identify the workflow and must be unique in the repo
+
+on: workflow_dispatch # or other events
+# This triggers the workflow. You need at least one event.
+
+jobs:
+# This is the main area of the workflow. It contains all the jobs that will be executed.
+# each job is assigned to runner, which is a server that runs the job.
+# each job runs in a separate environment, so you need to set up the environment for each job.
+# each job can run in parallel or sequentially, depending on the needs of the workflow.
+  build:
+    runs-on: ubuntu-latest
+    # this is the environment where the job will run, it can be a specific OS and versions or a container.
+    # you can also use self-hosted runners, which are servers that you manage and run the jobs on.
+
+    steps:
+    # This is the main area of the workflow. It contains all the steps that will be executed
+    # steps are the actions/tasks. These are run in order, synchronously.
+      - uses: actions/checkout@v4
+      # This action checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+      # This is the first step of the workflow. It is required to check out the code from the repository.
+      # It's organizational user/repository_name@tag_version
+      
+      - uses: actions/setup-node@v3
+      # This action sets up a Node.js environment for use in actions by adding the Node.js binary to the PATH.
+        with:
+          node-version: '18'
+        # with is used to pass parameters to each action.
+        # node-version is the version of Node.js to use. You can specify a specific version
+      - run: npm install -g bats
+      - run: bats -v
+      # This action runs a command in the shell. It can be used to run any command that you would run in the terminal.
+      # npm is the package manager for Node.js. It is used to install packages and dependencies.
+      # bats is a testing framework for Bash. It is used to run tests on Bash scripts.
+
+      # after the second run, the job will finish and wrap up the workflow.
+      # the node will delete all the files and folders created during the workflow.
+      # the workflow will be finished and the node will be deleted
