@@ -29,4 +29,4 @@ jobs:
           tags: ${{ vars.GH_USERNAME }}/${{ github.repository }}:latest,${{ vars.GH_USERNAME }}/${{ github.repository }}:01
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          push: ${{ vars.GITHUB_EVENT_NAME != 'pull_request'}}
+          #push: ${{ vars.GITHUB_EVENT_NAME != 'pull_request'}}
