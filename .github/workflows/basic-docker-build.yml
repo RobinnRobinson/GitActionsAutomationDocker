@@ -26,9 +26,8 @@ jobs:
       - name: Docker build
         uses: docker/build-push-action@v6
         with:
-          #push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ vars.GH_USERNAME }}/${{ github.repository }}:latest,${{ vars.GH_USERNAME }}/${{ github.repository }}:01
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          run: |
-            docker push ${{ vars.GH_USERNAME }}/${{ github.repository }}:01
+          push: ${{ vars.GITHUB_EVENT_NAME != 'pull_request'}}
+
