@@ -1,4 +1,4 @@
-name: 01 Basic Docker Build
+name: 1 Basic Docker Build
 
 on:
   push:
