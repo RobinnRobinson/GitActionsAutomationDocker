@@ -31,5 +31,3 @@ jobs:
           tags: robinrobinson/${{ github.repository }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/udemyexercise1:01
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-          
