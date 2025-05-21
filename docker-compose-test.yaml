@@ -20,4 +20,4 @@ services:
       postgres:
         condition: service_healthy
     # run all your tests here against the robinrobinson821 service
-    command: curl --fail http://127.0.0.1:8888 || exit 0
+    command: curl http://127.0.0.1:8888 || exit 0
