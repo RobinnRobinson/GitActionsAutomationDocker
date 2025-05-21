@@ -26,9 +26,7 @@ jobs:
       - name: Docker build
         uses: docker/build-push-action@v6
         with:
-          tags: robinrobinson/robinrobinson824:01
-          #push: robinrobinson/robinrobinson824:latest
-          #tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:01
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:02
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: ${{ github.event_name != 'pull_request'}}
