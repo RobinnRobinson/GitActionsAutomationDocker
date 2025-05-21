@@ -27,6 +27,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           #push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/robinnrobinson824/${{ github.repository }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/udemyexercise1:01
+          tags: ${{ variables.GH_USERNAME }}/robinnrobinson824/${{ github.repository }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/udemyexercise1:01
           cache-from: type=gha
           cache-to: type=gha,mode=max
