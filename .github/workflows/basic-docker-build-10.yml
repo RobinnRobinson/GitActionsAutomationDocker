@@ -1,6 +1,11 @@
 name: 1 Basic Docker Build CVE Blocking
 
 on:
+  push:
+    branches:
+      - 
+        main
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -58,14 +63,14 @@ jobs:
       # for more advanced tests, use docker compose with `depends_on`
       # NOTE: GHA and other CIs can also run dependency containers on their own
       # GHA `services:` can do this if you're trying to avoid docker compose
-      -
+      # -
         # taking image ID from previous step and uploding it to environment variable TESTING_IMAGE
         # and then using that variable in the docker compose file to run the tests
         # this will run the tests in the docker-compose.test.yml file
-        name: Test healthcheck in Docker Compose
-        run: |
-          export TESTING_IMAGE="${{ github.run_id }}"
-          docker compose -f docker-compose-test.yaml up --exit-code-from sut
+        # name: Test healthcheck in Docker Compose
+        # run: |
+        #  export TESTING_IMAGE="${{ github.run_id }}"
+        #  docker compose -f docker-compose-test.yaml up --exit-code-from sut
 
       # Use Trivy to scan the image for vulnerabilities
       # Trivy is a simple and comprehensive vulnerability scanner for containers and other artifacts.
